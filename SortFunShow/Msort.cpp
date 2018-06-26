@@ -8,7 +8,6 @@ MSort::MSort(std::function<void(int, int, int, int)> cb)
         show_cb = std::bind(&MSort::showCurrentSort, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 }
 
-//²åÈëÅÅÐò--->>Ö±½Ó²åÈëÅÅÐò
 void MSort::InsertSort(int arr[], int len) {
     if (1 >= len)
         return;
@@ -34,7 +33,6 @@ void MSort::InsertSort(int arr[], int len) {
     }
 }
 
-//²åÈëÅÅÐò--->>Ï£¶ûÅÅÐò
 void MSort::ShellSort(int arr[], int len)
 {
     if (1 >= len)
@@ -68,7 +66,6 @@ void MSort::ShellSort(int arr[], int len)
     }
 }
 
-//Ñ¡ÔñÅÅÐò--->>Ö±½ÓÑ¡ÔñÅÅÐò
 void MSort::ChooseSort(int arr[], int len)
 {
     if (1 >= len)
@@ -94,7 +91,6 @@ void MSort::ChooseSort(int arr[], int len)
     }
 }
 
-//Ñ¡ÔñÅÅÐò--->>¶ÑÅÅÐò  
 void MSort::HeapSort(int arr[], int len)
 {
     if (1 >= len)
@@ -127,7 +123,6 @@ void MSort::HeapSort(int arr[], int len)
     HeapSort(arr + 1, --len);
 }
 
-//½»»»ÅÅÐò--->>Ã°ÅÝÅÅÐò
 void MSort::SwitchSort(int arr[], int len)
 {
     if (1 >= len)
@@ -149,7 +144,6 @@ void MSort::SwitchSort(int arr[], int len)
     }
 }
 
-//½»»»ÅÅÐò--->>¼¦Î²¾ÆÅÅÐò
 void MSort:: CocktailSort(int arr[], int len)
 {
     if (1 >= len)
@@ -180,7 +174,6 @@ void MSort:: CocktailSort(int arr[], int len)
     }
 }
 
-//²åÈë-½»»»ÅÅÐò--->µØ¾«ÅÅÐò
 void MSort::GnomeSort(int arr[], int len)
 {
     if (1 >= len)
@@ -205,7 +198,6 @@ void MSort::GnomeSort(int arr[], int len)
     }
 }
 
-//½»»»ÅÅÐò--->>¿ìËÙÅÅÐò
 void MSort::QuickSort(int arr[], int len)
 {
     if (1 >= len)
@@ -230,7 +222,6 @@ void MSort::QuickSort(int arr[], int len)
     QuickSort(arr + idx + 1, len - idx - 1);
 }
 
-//¹é²¢ÅÅÐò--->>¶þÂ·¹é²¢ÅÅÐò
 void MSort::MergeSort(int arr[], int len)
 {
     if (len <= 1)
@@ -299,6 +290,7 @@ void MSort::BucketSort(int arr[], int len)
     }
     show_cb(-1, -1, -1, -1);
 
+    //sort for each bucket
     int* tp_arr = arr;
     for (size_t i = 0; i < bucket_nums; i++)
     {

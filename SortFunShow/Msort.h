@@ -3,16 +3,16 @@
 #include <iostream>
 
 enum SORTTYPE {
-    SORT_INSERT_DIRECTLY,   //≤Â»Î≈≈–Ú--->>÷±Ω”≤Â»Î≈≈–Ú
-    SORT_INSERT_SHELL,      //≤Â»Î≈≈–Ú--->>œ£∂˚≈≈–Ú
-    SORT_CHOOSE_DIRECTLY,   //—°‘Ò≈≈–Ú--->>÷±Ω”—°‘Ò≈≈–Ú
-    SORT_CHOOSE_HEAP,       //—°‘Ò≈≈–Ú--->>∂—≈≈–Ú 
-    SORT_SWITCH_BUBBLE,     //Ωªªª≈≈–Ú--->>√∞≈›≈≈–Ú
-    SORT_SWITCH_COCKTAIL,   //Ωªªª≈≈–Ú--->>º¶Œ≤æ∆≈≈–Ú
-    SORT_SWITCH_GNOME,      //≤Â»Î-Ωªªª≈≈–Ú--->>µÿæ´≈≈–Ú
-    SORT_SWITCH_QUICK,      //Ωªªª≈≈–Ú--->>øÏÀŸ≈≈–Ú
-    SORT_MERGE,             //πÈ≤¢≈≈–Ú--->>∂˛¬∑πÈ≤¢≈≈–Ú
-    SORT_BUCKET,            //Õ∞≈≈–Ú
+    SORT_INSERT_DIRECTLY,   //InsertSort--->>Insert Directly
+    SORT_INSERT_SHELL,      //InsertSort--->>Shell
+    SORT_CHOOSE_DIRECTLY,   //ChooseSort--->>Choose Directly
+    SORT_CHOOSE_HEAP,       //ChooseSort--->>Heap 
+    SORT_SWITCH_BUBBLE,     //SwitchSort--->>Bubble
+    SORT_SWITCH_COCKTAIL,   //SwitchSort--->>Cocktail
+    SORT_SWITCH_GNOME,      //Insert-Switch--->>Gonme
+    SORT_SWITCH_QUICK,      //Switch--->>Quick
+    SORT_MERGE,             //Merge--->>2-way merge sort
+    SORT_BUCKET,            //Bucket
     SORT_ALL                //
 };
 
@@ -21,34 +21,34 @@ class MSort
 public:
     MSort(std::function<void(int, int, int, int)> cb = nullptr);
 
-    //≤Â»Î≈≈–Ú--->>÷±Ω”≤Â»Î≈≈–Ú 23
+    //InsertSort--->>Insert Directly 23
     void InsertSort(int arr[], int len);
 
-    //≤Â»Î≈≈–Ú--->>œ£∂˚≈≈–Ú 27
+    //InsertSort--->>Shell 27
     void ShellSort(int arr[], int len);
 
-    //—°‘Ò≈≈–Ú--->>÷±Ω”—°‘Ò≈≈–Ú 7
+    //ChooseSort--->>Choose Directly 7
     void ChooseSort(int arr[], int len);
 
-    //—°‘Ò≈≈–Ú--->>∂—≈≈–Ú  
+    //ChooseSort--->>Heap 
     void HeapSort(int arr[], int len);
 
-    //Ωªªª≈≈–Ú--->>√∞≈›≈≈–Ú 7
+    //SwitchSort--->>Bubble 7
     void SwitchSort(int arr[], int len);
 
-    //Ωªªª≈≈–Ú--->>º¶Œ≤æ∆≈≈–Ú 26
+    //SwitchSort--->>Cocktail 26
     void CocktailSort(int arr[], int len);
 
-    //≤Â»Î-Ωªªª≈≈–Ú--->>µÿæ´≈≈–Ú 5
+    //Insert-Switch--->>Gonme 5
     void GnomeSort(int arr[], int len);
 
-    //Ωªªª≈≈–Ú--->>øÏÀŸ≈≈–Ú 8
+    //Switch--->>Quick 8
     void QuickSort(int arr[], int len);
 
-    //πÈ≤¢≈≈–Ú--->>∂˛¬∑πÈ≤¢≈≈–Ú 14-29
+    //Merge--->>2-way merge sort 14-29
     void MergeSort(int arr[], int len);
 
-    //Õ∞≈≈–Ú
+    //Bucket
     void BucketSort(int arr[], int len);
 
 private:

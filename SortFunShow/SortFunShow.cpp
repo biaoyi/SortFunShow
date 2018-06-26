@@ -4,6 +4,7 @@ SortFunShow::SortFunShow(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
+    setWindowTitle("Sort Process Show Tool");
     Init();
     elemInit();
     connectInit();
@@ -43,7 +44,6 @@ void SortFunShow::Init()
 
 void SortFunShow::stopSort()
 {
-    /*thd->finish();*/
 }
 
 void SortFunShow::finishSort()
@@ -118,15 +118,14 @@ void SortFunShow::setCurrentStep(int step)
     ui.lb_curStep->setText(QString::number(step));
 }
 
-
-void SortFunShow::setOrderArray(int * arr, int num)
-{
-
-}
-
 void SortFunShow::setCurSortName(const char * name)
 {
     ui.lb_curSort->setText(name);
+}
+
+int * SortFunShow::getSortElem()
+{
+    return sort_elem;
 }
 
 void SortFunShow::connectInit()

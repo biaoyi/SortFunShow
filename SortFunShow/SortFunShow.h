@@ -18,9 +18,8 @@ class SortFunShow : public QWidget
 
 public:
     SortFunShow(QWidget *parent = Q_NULLPTR);
-    void setOrderArray(int* arr, int num);
     void setCurSortName(const char* name);
-    int* sort_elem;
+    int* getSortElem();
 
 private:
     void connectInit();
@@ -29,10 +28,11 @@ private:
     void paintEvent(QPaintEvent *event);
 
 private:
-    Ui::SortFunShowClass ui;
+    int* sort_elem;
     WorkThread* thd;
     QPixmap* pixmap;
-    
+    Ui::SortFunShowClass ui;
+
     int w;
     int h;
 
@@ -40,18 +40,18 @@ private slots:
     void startSort();
     void stopSort();
     void finishSort();
-    void updateMainForm(int idx = -1, int val = -1, int cur_idx = -1, int cur_value = -1);
-    void updateSingleElem(int idx = -1, int val = -1);
     void setCurrentStep(int step);
+    void updateSingleElem(int idx = -1, int val = -1);
+    void updateMainForm(int idx = -1, int val = -1, int cur_idx = -1, int cur_value = -1);
 };
 
 class WorkThread : public QThread
 {
     Q_OBJECT
         signals :
-    void sortShowSignel(int idx,int value,int cur_idx,int cur_value);
-    void currentStep(int step);
     void finish();
+    void currentStep(int step);
+    void sortShowSignel(int idx,int value,int cur_idx,int cur_value);
 
 public:
     WorkThread(SortFunShow* ss)
@@ -96,16 +96,15 @@ public:
             {
                 cur_step = 0;
                 sortFunShow->setCurSortName(mp_sort_name[it.first]);
-                it.second(sortFunShow->sort_elem, 100);
+                it.second(sortFunShow->getSortElem(), 100);
                 emit finish();
             }
         }
         else
         {
-            
             cur_step = 0;
             sortFunShow->setCurSortName(mp_sort_name[cur_sort]);
-            mp_sort_fun[cur_sort](sortFunShow->sort_elem, 100);
+            mp_sort_fun[cur_sort](sortFunShow->getSortElem(), 100);
             emit finish();
         }
     }     
@@ -114,7 +113,7 @@ public:
     {
         emit sortShowSignel(idx, val, cur_idx, cur_value);
         emit currentStep(cur_step++);
-        QThread::usleep(10000);
+        QThread::usleep(10000);  //delay 10ms
     }
 
     std::map<SORTTYPE, char*> getSortName() const
