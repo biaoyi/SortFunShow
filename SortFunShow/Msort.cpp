@@ -1,4 +1,5 @@
 #include "Msort.h"
+#include <vector>
 
 MSort::MSort(std::function<void(int, int, int, int)> cb)
 {
@@ -39,7 +40,7 @@ void MSort::ShellSort(int arr[], int len)
         return;
 
     int step = len / 2;
-    while (step--)
+    while (step)
     {
         for (int i = 0; i < step; ++i)
         {
@@ -63,6 +64,7 @@ void MSort::ShellSort(int arr[], int len)
                 }
             }
         }
+        step /= 2;
     }
 }
 
@@ -196,6 +198,47 @@ void MSort::GnomeSort(int arr[], int len)
             idx++;
 
     }
+}
+
+void MSort::PatienceSort(int arr[], int len)
+{
+    if (1 >= len)
+        return;
+    
+    std::vector<std::vector<int>> buckets;
+    bool inserted = false;
+    for (size_t i = 0; i < len; i++)
+    {
+        for (int j = 0; j < buckets.size(); j++)
+        {
+            if (arr[i] <= buckets[j][0])
+            {
+                buckets[j].insert(buckets[j].begin(), arr[i]);
+                inserted = true;
+                break;
+            }
+        }
+        if (!inserted)
+        {
+            std::vector<int> newBucket;
+            newBucket.push_back(arr[i]);
+            inserted = false;
+        }
+    }
+
+    //just for show
+    int idx = 0;
+    for (const auto bucket : buckets)
+    {
+        for (const auto elem : bucket)
+        {
+            arr[idx++] = elem;
+        }
+    }
+    show_cb(-1, -1, -1, -1);
+    //InsertSort(arr, len);
+
+
 }
 
 void MSort::QuickSort(int arr[], int len)

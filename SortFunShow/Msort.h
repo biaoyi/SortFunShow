@@ -9,7 +9,8 @@ enum SORTTYPE {
     SORT_CHOOSE_HEAP,       //ChooseSort--->>Heap 
     SORT_SWITCH_BUBBLE,     //SwitchSort--->>Bubble
     SORT_SWITCH_COCKTAIL,   //SwitchSort--->>Cocktail
-    SORT_SWITCH_GNOME,      //Insert-Switch--->>Gonme
+    SORT_SWITCH_GNOME,      //Insert&Switch--->>Gonme
+    SORT_PATIENCE,          //Insert&Choose--->>Patience
     SORT_SWITCH_QUICK,      //Switch--->>Quick
     SORT_MERGE,             //Merge--->>2-way merge sort
     SORT_BUCKET,            //Bucket
@@ -39,8 +40,11 @@ public:
     //SwitchSort--->>Cocktail 26
     void CocktailSort(int arr[], int len);
 
-    //Insert-Switch--->>Gonme 5
+    //Insert&Switch--->>Gonme 5
     void GnomeSort(int arr[], int len);
+
+    //Insert&Choose
+    void PatienceSort(int arr[], int len);
 
     //Switch--->>Quick 8
     void QuickSort(int arr[], int len);

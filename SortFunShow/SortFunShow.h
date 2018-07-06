@@ -67,9 +67,10 @@ public:
             { SORT_SWITCH_BUBBLE   ,  std::bind(&MSort::SwitchSort,mSortFun,std::placeholders::_1, std::placeholders::_2) },
             { SORT_SWITCH_COCKTAIL ,  std::bind(&MSort::CocktailSort,mSortFun,std::placeholders::_1, std::placeholders::_2) },
             { SORT_SWITCH_GNOME    ,  std::bind(&MSort::GnomeSort,mSortFun,std::placeholders::_1, std::placeholders::_2) },
+            { SORT_PATIENCE        ,  std::bind(&MSort::PatienceSort,mSortFun,std::placeholders::_1, std::placeholders::_2) },
             { SORT_SWITCH_QUICK    ,  std::bind(&MSort::QuickSort,mSortFun,std::placeholders::_1, std::placeholders::_2) },
             { SORT_MERGE           ,  std::bind(&MSort::MergeSort,mSortFun,std::placeholders::_1, std::placeholders::_2) },
-            { SORT_BUCKET           ,  std::bind(&MSort::BucketSort,mSortFun,std::placeholders::_1, std::placeholders::_2) }
+            { SORT_BUCKET          ,  std::bind(&MSort::BucketSort,mSortFun,std::placeholders::_1, std::placeholders::_2) }
         };
 
         mp_sort_name = {
@@ -80,6 +81,7 @@ public:
             { SORT_SWITCH_BUBBLE   ,  "SORT_SWITCH_BUBBLE" },
             { SORT_SWITCH_COCKTAIL ,  "SORT_SWITCH_COCKTAIL"},
             { SORT_SWITCH_GNOME    ,  "SORT_SWITCH_GNOME" },
+            { SORT_PATIENCE        ,  "SORT_PATIENCE" },
             { SORT_SWITCH_QUICK    ,  "SORT_SWITCH_QUICK" },
             { SORT_MERGE           ,  "SORT_MERGE" },
             { SORT_BUCKET          ,  "SORT_BUCKET"}
