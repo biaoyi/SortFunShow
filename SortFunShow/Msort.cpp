@@ -15,22 +15,15 @@ void MSort::InsertSort(int arr[], int len) {
 
     for (int i = 1; i < len; ++i)
     {
-        for (int j = 0; j < i; ++j)
+        int cur_sort = arr[i];
+        int j = i - 1;
+        
+        for (; j >= 0 && cur_sort < arr[j]; j--)
         {
-            
             show_cb(j, arr[j], i, arr[i]);
-
-            if (arr[j] > arr[i])
-            {
-                int tmp = arr[i];
-                for (int k = i; k > j; --k)
-                {
-                    arr[k] = arr[k - 1];
-                }
-                arr[j] = tmp;
-                break;
-            }
+            arr[j + 1] = arr[j];
         }
+        arr[j + 1] = cur_sort;
     }
 }
 
@@ -42,9 +35,9 @@ void MSort::ShellSort(int arr[], int len)
     int step = len / 2;
     while (step)
     {
-        for (int i = 0; i < step; ++i)
+        for (int i = 0; i < step; ++i)  //divide into n sub array
         {
-            for (int j = i; j < len - step; j += step)
+            for (int j = i; j < len - step; j += step)  //travel each sub array and insert sort
             {
                 int cur = arr[j + step];
                 for (int k = i; k <= j; k += step)
